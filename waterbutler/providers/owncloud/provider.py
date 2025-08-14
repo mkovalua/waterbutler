@@ -150,6 +150,7 @@ class OwnCloudProvider(provider.BaseProvider):
         download_resp = await self.make_request(
             'GET',
             self._webdav_url_ + path.full_path,
+            headers={'Accept-Encoding': 'identity'},
             range=range,
             expects=(200, 206,),
             throws=exceptions.DownloadError,
